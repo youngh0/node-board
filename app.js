@@ -3,8 +3,8 @@ dotenv.config();
 const express = require('express');
 const app = express();
 
-const board = require('./src/router/board')
-const user = require('./src/router/user')
+const board = require('./src/routes/board-route')
+const user = require('./src/routes/user-route')
 
 app.set('port', process.env.PORT || 3000);
 app.listen(app.get('port'), () => {
