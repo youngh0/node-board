@@ -5,6 +5,7 @@ const app = express();
 
 const board = require('./src/routes/board-route')
 const user = require('./src/routes/user-route')
+const comment = require('./src/routes/comment-route')
 
 app.set('port', process.env.PORT || 3000);
 app.listen(app.get('port'), () => {
@@ -22,3 +23,4 @@ app.get('/',((req, res) => {
 
 app.use('/board',board)
 app.use('/user',user)
+app.use('/comment',comment)
