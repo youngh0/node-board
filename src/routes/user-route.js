@@ -4,6 +4,6 @@ const userController = require("../controllers/user.controller");
 
 router.post('/join', userController.join);
 router.post('/login', userController.login)
-router.post('/check', userController.check)
+router.post('/check', userController.checkToken)
 
 module.exports = router;

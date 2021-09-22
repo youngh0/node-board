@@ -1,9 +1,11 @@
 const boardModel = require('../models/board.model')
-
+const userController = require("../controllers/user.controller")
 // 게시글 전체 리스트
 exports.getBoardList = async (req, res) => {
     try{
+        await userController.checkToken(req,res)
         res.json({msg: await boardModel.getBoardList()})
+
     }
     catch (e) {
         res.status(500).send("message : Internal Server Error");
@@ -24,6 +26,7 @@ exports.getBoardDetail = async (req, res) => {
 // 게시글 작성
 exports.postBoard = async (req, res) => {
     try{
+        await userController.checkToken(req,res)
         const{title, body, user_id} = req.body
 
         if(!title || !body){res.status(400).send("message : input something")}

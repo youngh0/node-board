@@ -30,6 +30,7 @@ exports.deleteBoard = async (board_id) => {
     const connection = await db.getConnection(async conn => conn);
     let query = 'DELETE FROM BOARD WHERE board_id = ?'
     await connection.query(query,board_id)
+    connection.release()
 }
 
 exports.updateBoard = async (title, body, board_id) => {
@@ -38,4 +39,5 @@ exports.updateBoard = async (title, body, board_id) => {
     const query = 'UPDATE BOARD SET title=?,body=? WHERE board_id = ?'
 
     await connection.query(query, [title, body, board_id]);
+    connection.release()
 }
