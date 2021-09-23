@@ -4,6 +4,7 @@ class GeneralError extends Error {
         this.message = message;
     }
 
+    // 에러코드 반환
     getCode() {
         if (this instanceof BadRequest) {
             return 400;

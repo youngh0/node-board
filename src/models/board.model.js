@@ -17,6 +17,7 @@ exports.getBoardDetail = async (board_id) => {
     return data[0]
 }
 
+// 게시글 작성
 exports.writeBoard = async (title, body, user_id) => {
     let query = 'INSERT INTO BOARD(title, body, fk_user_id) VALUES(?,?,?)'
     const connection = await db.getConnection(async conn => conn);
@@ -26,6 +27,7 @@ exports.writeBoard = async (title, body, user_id) => {
     connection.release()
 }
 
+// 게시글 삭제
 exports.deleteBoard = async (board_id) => {
     const connection = await db.getConnection(async conn => conn);
     let query = 'DELETE FROM BOARD WHERE board_id = ?'
@@ -35,6 +37,7 @@ exports.deleteBoard = async (board_id) => {
     connection.release()
 }
 
+// 게시글 수정
 exports.updateBoard = async (title, body, board_id) => {
     const connection = await db.getConnection(async conn => conn);
 

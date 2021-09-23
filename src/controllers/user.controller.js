@@ -20,7 +20,10 @@ exports.join = async (req, res, next) => {
 
                 // DB에 저장
                 await userModel.createUser(email, hashing, nickname)
-                res.status(201).json({msg: "create user"})
+                res.status(201).json({
+                    status: 201,
+                    msg: "create user"
+                })
             }
         } else {
             throw new BadRequest("have to input email, password, nickname");
@@ -48,7 +51,10 @@ exports.login = async (req, res, next) => {
             )
             // console.log(token)
             // console.log(jwt.decode(token,process.env.JWT_KEY))
-            res.status(200).json({token: token})
+            res.status(200).json({
+                status: 200,
+                token: token
+            })
         }
         // 잘못된 비밀번호
         else {
