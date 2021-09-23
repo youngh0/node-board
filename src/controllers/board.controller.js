@@ -50,6 +50,7 @@ exports.postBoard = async (req, res, next) => {
 // 게시글 삭제
 exports.deleteBoard = async (req, res, next) => {
     try{
+        console.log(req)
         const board_id = req.params.board_id;
         await boardModel.deleteBoard(board_id);
         res.status(200).json({
