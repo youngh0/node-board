@@ -2,6 +2,11 @@
 
 ## express로 회원기능, 게시판 기능, 댓글 기능 만들어보기
 
+## MVC
+- model : db관련 코드만 작성
+- controller : db제외 서비스 코드만 작성
+- view : front-end는 작성x 
+
 ### 회원기능
 - 회원가입 시 email, password, nickname저장
 - 로그인 시 성공하면 jwt token발급
