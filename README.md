@@ -10,5 +10,5 @@
 - 게시글을 읽는 기능은 token없어도 가능
 - 그 외 작성, 수정, 삭제는 헤더에 token필요
 
-[API]: (https://documenter.getpostman.com/view/16655599/UUxwC96x)
-[API](https://documenter.getpostman.com/view/16655599/UUxwC96x)
+
+[postman API 명세서](https://documenter.getpostman.com/view/16655599/UUxwC96x)
