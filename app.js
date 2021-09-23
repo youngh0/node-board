@@ -6,6 +6,7 @@ const app = express();
 const board = require('./src/routes/board-route')
 const user = require('./src/routes/user-route')
 const comment = require('./src/routes/comment-route')
+const errorHandle = require('./src/middleware/error-handler')
 
 app.set('port', process.env.PORT || 3000);
 app.listen(app.get('port'), () => {
@@ -21,3 +22,4 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/board',board)
 app.use('/user',user)
 app.use('/comment',comment)
+app.use(errorHandle)

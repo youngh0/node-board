@@ -1,4 +1,5 @@
 const db = require("../config/db")
+const {BadRequest} = require("../error/errors")
 
 exports.checkExistUser = async (email) => {
     const connection = await db.getConnection(async conn => conn);
@@ -23,7 +24,11 @@ exports.createUser = async (email, password, nickname) => {
 exports.login = async (email) => {
     const connection = await db.getConnection(async conn => conn);
     const password = await connection.query('SELECT password FROM USER WHERE email = ?', email);
+    if(password[0].length === 0) {
+        connection.release()
+        throw new BadRequest("invalid email")
+        return
+    }
     connection.release()
-
     return password[0][0].password
 }

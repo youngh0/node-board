@@ -29,7 +29,9 @@ exports.writeBoard = async (title, body, user_id) => {
 exports.deleteBoard = async (board_id) => {
     const connection = await db.getConnection(async conn => conn);
     let query = 'DELETE FROM BOARD WHERE board_id = ?'
-    await connection.query(query,board_id)
+    const result = await connection.query(query,board_id)
+    console.log(result)
+
     connection.release()
 }
 
