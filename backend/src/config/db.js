@@ -3,7 +3,7 @@ dotenv.config()
 const mysql = require('mysql2/promise');
 
 const pool = {
-    host     : 'localhost',
+    host     : '172.18.0.2',
     user     : process.env.DB_USER,
     password : process.env.DB_PASSWORD ,
     port: process.env.DB_PORT,

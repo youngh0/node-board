@@ -1,5 +1,5 @@
 const userModel = require("../models/user.model")
-const bcrypt = require("bcrypt")
+// const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const {BadRequest} = require("../error/errors")
 
@@ -15,16 +15,16 @@ exports.join = async (req, res, next) => {
             if (isExist.length > 0) throw new BadRequest("exist email");
 
             // 가입 가능
-            else {
-                const hashing = await bcrypt.hash(password, 10);
+            // else {
+            //     const hashing = await bcrypt.hash(password, 10);
 
-                // DB에 저장
-                await userModel.createUser(email, hashing, nickname)
-                res.status(201).json({
-                    status: 201,
-                    msg: "create user"
-                })
-            }
+            //     // DB에 저장
+            //     await userModel.createUser(email, hashing, nickname)
+            //     res.status(201).json({
+            //         status: 201,
+            //         msg: "create user"
+            //     })
+            // }
         } else {
             throw new BadRequest("have to input email, password, nickname");
         }
@@ -41,25 +41,25 @@ exports.login = async (req, res, next) => {
         // DB에 저장되어 있는 비밀번호 가져오기
         const comparePwd = await userModel.login(email)
 
-        const isMatch = await bcrypt.compare(password, comparePwd)
-        // 올바른 비밀번호
-        if (isMatch) {
-            const token = jwt.sign(
-                {email},
-                process.env.JWT_KEY,
-                {expiresIn: '1d'}
-            )
-            // console.log(token)
-            // console.log(jwt.decode(token,process.env.JWT_KEY))
-            res.status(200).json({
-                status: 200,
-                token: token
-            })
-        }
+        // const isMatch = await bcrypt.compare(password, comparePwd)
+        // // 올바른 비밀번호
+        // if (isMatch) {
+        //     const token = jwt.sign(
+        //         {email},
+        //         process.env.JWT_KEY,
+        //         {expiresIn: '1d'}
+        //     )
+        //     // console.log(token)
+        //     // console.log(jwt.decode(token,process.env.JWT_KEY))
+        //     res.status(200).json({
+        //         status: 200,
+        //         token: token
+        //     })
+        // }
         // 잘못된 비밀번호
-        else {
-            throw new BadRequest("wrong password")
-        }
+        // else {
+        //     throw new BadRequest("wrong password")
+        // }
     } catch (e) {
         next(e)
     }

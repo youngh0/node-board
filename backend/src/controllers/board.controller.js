@@ -9,6 +9,7 @@ exports.getBoardList = async (req, res, next) => {
         })
     }
     catch (e) {
+        console.log(e)
         next(e)
     }
 }

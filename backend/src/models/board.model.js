@@ -3,7 +3,9 @@ const db = require("../config/db")
 exports.getBoardList = async () => {
     const connection = await db.getConnection(async conn => conn);
     const board_data = await connection.query('SELECT * FROM BOARD');
+    // const board_data = await connection.query('show tables');
     console.log(board_data[0])
+    // console.log(board_data)
     connection.release()
 
     return board_data[0]
